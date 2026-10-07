@@ -14,3 +14,13 @@ function renderRequests() {
   document.getElementById('count').textContent = window.visibleRequests.length + '건';
 }
 renderRequests();
+document.getElementById('all').disabled = false;
+document.getElementById('open').disabled = false;
+document.getElementById('all').addEventListener('click', () => {
+  window.visibleRequests = window.requests.slice();
+  renderRequests();
+});
+document.getElementById('open').addEventListener('click', () => {
+  window.visibleRequests = window.requests.filter(item => item.status !== '완료');
+  renderRequests();
+});
